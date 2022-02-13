@@ -1,0 +1,86 @@
+PROJECTO_TUGA_EXCHANGE
+
+PROJECTO → 1. Program
+		 → 2. SubMenus
+		 → 3. Investidor
+		 → 4. Administrador
+		 → 5. CryptoAPI
+		 → 6. Mercado
+	 
+	 1. Program - Main
+				- MainMenu
+				- Inheritance Objects → File
+				- using System.Text;  → para usarmos File //https://docs.microsoft.com/en-us/dotnet/api/
+				- The file to open for reading. (path); returns a string containing all text in the file
+				- A classe Path efetua operações com strings que representam informação sobre ficheiros e diretorias.
+				- ficheiros de texto (.txt) criador para guardar infos
+				- #region - visa diminuir visualmente o código e deixá-lo agrupado por tipo de execução, por exemplo: Eventos, Funções e Métodos, Construtores, Enumeradores, Variáveis, etc. 
+				- Para programas que possui inúmeras linhas de códigos dentro de classes, este recurso ajuda a melhor dividir o código. 
+				- Deve começar com #region e terminar com #endregion
+	
+	 2. SubMenus - MenuInvestidor
+				 - MenuAdministrador
+				 - MenuTipoMoeda
+	 
+	 3. Investidor  - POO → Encapsulamento → criar uma cápsula para controlar o acesso aos objectos, métodos e classes
+							→ Evitar deixar atributos de forma pública;
+							
+					- classe Investidor tem propriedades
+					- classes são modelos para a criação de objectos; 
+					- um objecto não existe ssem a definição de uma classe;
+					- através da definição de uma classe, podemos descrever:
+						a) quais as propriedades e/ou atributos que o objecto vai ter;
+						b) qual o comportamento que o objecto da classe terá;
+					- a classe seria então o modelo a partir do qual criamos os objectos da classe e, para isso, criamos instâncias da classe;
+					- usando "new" podemos definir/utilizar as propriedades/atributos e comportamento do objecto;
+					- devemos criar uma instância da classe (criar um objecto) para poder ter acessoàs propriedades e métodos da classe;
+					
+					- métodos estáticos para gravar um texto num arquivo; abre e fecha o arquivo (File.WriteAllText)
+					- this. refª um atributo da classe; palavra reservada; reª ao próprio objecto → permite saber que se trata de um atributo
+					
+					- Depositar - a conta inicial está a 0 → fazer depósito em €
+					- ComprarMoeda	- calcular comissão do Admin consoante compra de moedas
+									- descontar o € calculado
+					- VenderMoeda	...
+	
+	 4. Administrador	- TotalComissoes
+						- Ficheiro SaveAdministrador 
+						- MostraComissoes 
+	 
+	 5. CryptoAPI	- System.Timers → timer DefinePriceUpdateInSeconds 
+                    - A namespace → The System.Timers namespace proves useful. With a Timer, we can ensure nothing unexpected has happened. We can also run a periodic update (to do anything).
+					- esta classe estará sempre pública para que possa ser chamada e usada sempre que precisarmos; assim como será a conexão para todo o restante desenvolvimento das acções pretendidas 
+					- TimerExample is a static class, meaning it cannot have instance members or fields. We include the System.Timers namespace and see the Elapsed event function. 
+					- A summary → The Timer class from the System.Timers namespace can be used to run code on an interval. 
+					- An interval-based validation approach is recommended for important applications.
+					- // Part 1: setup the timer for X seconds. 
+					- To add the elapsed event handler:
+							- ... Type "_timer.Elapsed += " and press tab twice. 
+							- https://www.dotnetperls.com/timer 
+							- https://docs.microsoft.com/en-us/dotnet/api/system.timers.timer.elapsed?view=net-6.0
+					- Construtor do Timer é em milisegundos: http://www.macoratti.net/20/07/c_timer1.htm
+					
+					- Os preços são atualizados a cada n segundos (definidos através do método DefinePriceUpdateInSeconds()), sendo que a variação máxima a cada iteração é de +/- 0.5%; 
+                    - A simulação deverá correr o número de vezes equivalente ao tempo passado desde que o método de cotações foi chamado pela última vez. 
+					- Por exemplo, se o método foi chamado há 10 min, e o intervalo definido é de 30 segundos, então será necessário correr a simulação 20 vezes para obter as cotações atuais.
+					
+					- AddCoin - adicionar nova criptomoeda no sistema
+					- RemoveCoin - Retira criptomoeda do sistema
+					- GetCoins - devolve lista de todas as moedas geridas pela corretora;
+					- GetPrices - Devolve os preços atualizados de todas as moedas registadas;
+					- DefinePriceUpdateInSeconds - Permite definir o intervalo de tempo em segundos que o módulo atualiza a cotação das moedas;
+					- GetPriceUpdateInSeconds - Permite obter o intervalo de tempo (em segundos) em que o módulo calcula novos preços de cotações;
+					- Save - Permite gravar as cotações e moedas geridas, bem como a data do último câmbio. 
+							 Sempre que o método GetPrices() é chamado, deve ser chamado também o método Save() para assegurar que em caso de falha do sistema, os dados tenham sido persistidos.
+					- Read - Permite ler as moedas, câmbio e data a que dizem respeito. 
+							 Sempre que o programa é iniciado, o sistema deverá ver se o ficheiro já existe, e se sim, carregar todos os dados previamente persistidos.
+	 
+	 6. Mercado		- Valor das Moedas tendo em conta o câmbio;
+
+					- Get → propriedade de leitura = obter um valor de uma propriedade
+					- Set → somente de escrita = atribuir valor a uma propriedade
+					- Get Set = readonly + write only (propriedades acessíveis "public" → idênticas a métodos)
+							- podem também realizar alguma conversão ou cálculo nos dados antes de serem armazenados ou retornados;
+					
+					
+	 
